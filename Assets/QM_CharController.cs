@@ -8,7 +8,7 @@ public class QM_CharController : MonoBehaviour
 {
 
     private float moveSpeed = 6; // move speed
-    private float turnSpeed = 90; // turning speed (degrees/second)
+    private float turnSpeed = 90; // turning speed 
     private float lerpSpeed = 10; // smoothing speed
     private float gravity = 0.5f; // gravity acceleration
     private bool isGrounded;
@@ -21,6 +21,7 @@ public class QM_CharController : MonoBehaviour
     private bool jumping = false; // flag "I'm jumping to wall"
     private float vertSpeed = 0; // vertical jump current speed
     private Rigidbody rb; //reference to rigidbody object
+
 
     private Transform myTransform;
     public BoxCollider boxCollider; // drag BoxCollider ref in editor
@@ -64,7 +65,7 @@ public class QM_CharController : MonoBehaviour
         }
 
         // movement code - turn left/right with Horizontal axis:
-        myTransform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0);
+        myTransform.Rotate(0, Input.GetAxis("Mouse X") * turnSpeed * Time.deltaTime, 0);
         // update surface normal and isGrounded:
         ray = new Ray(myTransform.position, -myNormal); // cast ray downwards
         if (Physics.Raycast(ray, out hit))
